@@ -1,0 +1,17 @@
+﻿@model IEnumerable<ProductCategory>
+
+<h2>Product Categories</h2>
+
+<table class="table">
+    <tr>
+        <th>Category</th>
+    </tr>
+
+    @foreach (var category in Model)
+    {
+        <tr>
+            <td>@category.CategoryId</td>
+            <td>@category.ProdCat</td>
+        </tr>
+    }
+</table>

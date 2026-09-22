@@ -6,6 +6,13 @@ namespace TH_H60_A01.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ProductCategoryDB _productCategoryDB;
+
+        public HomeController(ProductCategoryDB productCategoryDB)
+        {
+            _productCategoryDB = productCategoryDB;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -20,6 +27,11 @@ namespace TH_H60_A01.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult Categories()
+        {
+            var categories = _productCategoryDB.GetCategories();
+            return View(categories);
         }
     }
 }

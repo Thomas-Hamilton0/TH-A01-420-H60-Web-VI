@@ -11,6 +11,8 @@ var connectionString = builder.Configuration.GetConnectionString("MyConnection")
 builder.Services.AddDbContext<H60AssignmentDbThContext>(
     x => x.UseSqlServer(connectionString));
 
+builder.Services.AddScoped<ProductCategoryDB>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

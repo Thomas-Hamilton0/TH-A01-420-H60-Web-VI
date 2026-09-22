@@ -1,4 +1,6 @@
-﻿namespace TH_H60_A01.Models
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace TH_H60_A01.Models
 {
     public class ProductCategoryDB
     {
@@ -40,6 +42,13 @@
                 _context.ProductCategories.Remove(category);
                 _context.SaveChanges();
             }
+        }
+        
+        public List<ProductCategory> GetCategories()
+        {
+            return _context.ProductCategories
+                    .OrderBy(c => c.ProdCat)
+                    .ToList();
         }
     }
 }
