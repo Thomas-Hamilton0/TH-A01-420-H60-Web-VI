@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using TH_H60_A01.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var connectionString = builder.Configuration.GetConnectionString("MyConnection");
+
+builder.Services.AddDbContext<H60AssignmentDbThContext>(
+    x => x.UseSqlServer(connectionString));
 
 var app = builder.Build();
 
@@ -20,6 +28,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();
